@@ -1,0 +1,75 @@
+---
+interface EventItem {
+  date: string;
+  day: string;
+  month: string;
+  title: string;
+  location: string;
+  category: string;
+  href: string;
+}
+
+const events: EventItem[] = [
+  {
+    date: "2025-03-15",
+    day: "15",
+    month: "MAR",
+    title: "Open Day Università di Brescia",
+    location: "Via Branze 38, Brescia",
+    category: "Orientamento",
+    href: "/eventi/open-day-unibs",
+  },
+  {
+    date: "2025-03-20",
+    day: "20",
+    month: "MAR",
+    title: "Workshop: Orientamento al lavoro",
+    location: "Piazza della Loggia, Brescia",
+    category: "Carriera",
+    href: "/eventi/workshop-lavoro",
+  },
+  {
+    date: "2025-03-28",
+    day: "28",
+    month: "MAR",
+    title: "Festival della Scienza Bresciana",
+    location: "Via dei Musei, Brescia",
+    category: "Cultura",
+    href: "/eventi/festival-scienza",
+  },
+];
+---
+
+<section class="events-section" id="eventi">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Prossimi eventi</h2>
+      <p class="section-subtitle">
+        Non perderti gli appuntamenti dedicati agli studenti
+      </p>
+    </div>
+
+    <div class="events-list">
+      {
+        events.map((event) => (
+          <a href={event.href} class="event-card">
+            <div class="event-date">
+              <span class="event-day">{event.day}</span>
+              <span class="event-month">{event.month}</span>
+            </div>
+            <div class="event-info">
+              <span class="event-category">{event.category}</span>
+              <h3 class="event-title">{event.title}</h3>
+              <p class="event-location">📍 {event.location}</p>
+            </div>
+            <div class="event-arrow">→</div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="events-cta">
+      <a href="/eventi" class="btn btn-outline">Vedi tutti gli eventi</a>
+    </div>
+  </div>
+</section>

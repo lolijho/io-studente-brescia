@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NewsGrid from "../components/NewsGrid.astro";
+---
+
+<BaseLayout
+  title="News - Io Studente Brescia"
+  description="Le ultime notizie e aggiornamenti per gli studenti di Brescia."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>News</h1>
+      <p>Restate aggiornati sulle ultime novità</p>
+    </div>
+  </section>
+
+  <NewsGrid />
+</BaseLayout>

@@ -1,0 +1,71 @@
+---
+interface ServiceItem {
+  icon: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const services: ServiceItem[] = [
+  {
+    icon: "🚌",
+    title: "Trasporti",
+    description: "Abbonamenti agevolati su bus e metro per studenti di Brescia e provincia.",
+    href: "/servizi#trasporti",
+  },
+  {
+    icon: "💰",
+    title: "Borse di studio",
+    description: "Informazioni su bandi, requisiti e scadenze per richiedere finanziamenti.",
+    href: "/servizi#borse",
+  },
+  {
+    icon: "🍽️",
+    title: "Mensa",
+    description: "Accesso alle mense universitarie con tariffe agevolate e prenotazione pasti.",
+    href: "/servizi#mensa",
+  },
+  {
+    icon: "🏠",
+    title: "Housing",
+    description: "Trova alloggi a Brescia con convenzioni dedicate agli studenti.",
+    href: "/servizi#housing",
+  },
+  {
+    icon: "📚",
+    title: "Biblioteche",
+    description: "Consulta il catalogo unico delle biblioteche universitarie e cittadine.",
+    href: "/servizi#biblioteche",
+  },
+  {
+    icon: "🎯",
+    title: "Orientamento",
+    description: "Scopri i percorsi di studio e ricevi supporto per la scelta dell'università.",
+    href: "/servizi#orientamento",
+  },
+];
+---
+
+<section class="services-section" id="servizi">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">I nostri servizi</h2>
+      <p class="section-subtitle">
+        Tutto ciò di cui hai bisogno per la vita da studente a Brescia
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {
+        services.map((service) => (
+          <a href={service.href} class="service-card">
+            <div class="service-icon">{service.icon}</div>
+            <h3 class="service-title">{service.title}</h3>
+            <p class="service-description">{service.description}</p>
+            <span class="service-link">Scopri di più →</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
