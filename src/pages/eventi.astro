@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EventList from "../components/EventList.astro";
+---
+
+<BaseLayout
+  title="Eventi - Io Studente Brescia"
+  description="Scopri gli eventi dedicati agli studenti di Brescia: open day, workshop, festival e molto altro."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>Eventi</h1>
+      <p>Gli appuntamenti dedicati agli studenti di Brescia</p>
+    </div>
+  </section>
+
+  <EventList />
+</BaseLayout>
