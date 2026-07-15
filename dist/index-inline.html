@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{meta_titolo}}</title>
+    <meta name="description" content="{{meta_descrizione}}" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%2316294f%22%2F%3E%0A%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22central%22%0A%20%20%20%20%20%20%20%20font-family%3D%22Poppins%2C%20Arial%2C%20sans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2230%22%20fill%3D%22%23f26522%22%3Eio%3C%2Ftext%3E%0A%3C%2Fsvg%3E%0A" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+/* =========================================================
+   ioStudente – Recupero Anni Scolastici Brescia
+   Static landing page. Mobile-first.
+   ========================================================= */
+
+/* ---------- Reset & tokens ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --orange: #f26522;
+  --orange-dark: #d9551a;
+  --navy: #16294f;
+  --navy-deep: #101f3d;
+  --heading: #16294f;
+  --text: #5b6675;
+  --text-light: #8a93a1;
+  --bg: #ffffff;
+  --bg-soft: #f5f6f9;
+  --border: #e7eaef;
+  --white: #ffffff;
+
+  --font-head: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 2px 10px rgba(22, 41, 79, 0.06);
+  --shadow-md: 0 10px 30px rgba(22, 41, 79, 0.1);
+  --container: 1180px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-head);
+  color: var(--heading);
+  line-height: 1.15;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-dark);
+  border-color: var(--orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(242, 101, 34, 0.3);
+}
+
+.btn-ghost {
+  background: #fff;
+  color: var(--navy);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--navy);
+  border-color: #fff;
+}
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-ghost-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+.wa-icon {
+  width: 18px;
+  height: 18px;
+  color: #25d366;
+}
+.btn-ghost-light .wa-icon {
+  color: #fff;
+}
+
+/* ---------- Eyebrow / section headings ---------- */
+.eyebrow {
+  font-family: var(--font-head);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.eyebrow-center {
+  text-align: center;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 42px;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  font-weight: 700;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 74px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-text {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+.logo-text strong {
+  font-weight: 800;
+}
+.logo-text.light,
+.logo-text.light strong {
+  color: #fff;
+}
+.logo-tagline {
+  font-family: var(--font-head);
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.main-nav ul {
+  display: none;
+}
+.main-nav a {
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  transition: color 0.2s ease;
+}
+.main-nav a:hover {
+  color: var(--orange);
+}
+
+.btn-header {
+  display: none;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  width: 24px;
+  height: 2.5px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Mobile nav panel */
+.main-nav.open ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 74px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px 24px;
+  gap: 4px;
+  box-shadow: var(--shadow-md);
+}
+.main-nav.open a {
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 44px 0 56px;
+  background: linear-gradient(180deg, #fff 0%, #fbfcfe 100%);
+}
+.hero-grid {
+  display: grid;
+  gap: 36px;
+}
+.hero-title {
+  font-size: clamp(2.1rem, 8vw, 3.4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 30px;
+  max-width: 520px;
+}
+
+.hero-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 18px;
+  margin-bottom: 32px;
+}
+.hero-features li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+.hero-features strong {
+  display: block;
+  font-family: var(--font-head);
+  color: var(--navy);
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.feature-icon {
+  flex-shrink: 0;
+  color: var(--navy);
+}
+.feature-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-media {
+  position: relative;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #eef1f6, #dfe4ec);
+}
+.hero-badge {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  right: 16px;
+  max-width: 340px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--navy);
+  color: #fff;
+  padding: 16px 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+.hero-badge p {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.hero-badge strong {
+  color: var(--orange);
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+.badge-star {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.badge-star svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---------- Target / soluzioni ---------- */
+.section-target {
+  background: var(--bg-soft);
+}
+.card-grid {
+  display: grid;
+  gap: 20px;
+}
+.grid-4 {
+  grid-template-columns: 1fr;
+}
+.info-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: #f2d3c2;
+}
+.card-icon {
+  display: inline-flex;
+  color: var(--orange);
+  margin-bottom: 18px;
+}
+.card-icon svg {
+  width: 34px;
+  height: 34px;
+}
+.info-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.info-card p {
+  font-size: 0.9rem;
+}
+
+/* ---------- Steps ---------- */
+.steps {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.step {
+  text-align: center;
+  position: relative;
+}
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 16px rgba(242, 101, 34, 0.3);
+}
+.step h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.step p {
+  font-size: 0.9rem;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+/* ---------- Sede (dark) ---------- */
+.section-sede {
+  background: var(--navy);
+  color: #cdd6e4;
+}
+.sede-grid {
+  display: grid;
+  gap: 36px;
+}
+.section-sede .eyebrow {
+  color: var(--orange);
+}
+.sede-title {
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.sede-desc {
+  margin-bottom: 22px;
+  font-size: 0.95rem;
+}
+.sede-list li,
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 9px 0;
+  font-size: 0.92rem;
+}
+.mini-icon {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.mini-icon svg {
+  width: 20px;
+  height: 20px;
+}
+.check-list .check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.sede-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #24365c, #1b2c4d);
+}
+
+/* ---------- Reviews ---------- */
+.section-reviews {
+  background: var(--bg-soft);
+}
+.reviews-grid {
+  display: grid;
+  gap: 36px;
+}
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.trust-star {
+  color: #00b67a;
+}
+.trust-star svg {
+  width: 22px;
+  height: 22px;
+}
+.trust-label {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+.trust-bars {
+  display: inline-flex;
+  gap: 2px;
+}
+.trust-bars i {
+  width: 20px;
+  height: 20px;
+  background: #00b67a;
+  display: inline-block;
+}
+.trust-rating {
+  font-size: 0.85rem;
+  color: var(--text);
+  font-weight: 600;
+}
+.reviews-cards {
+  display: grid;
+  gap: 20px;
+}
+.review-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.stars {
+  color: var(--orange);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.review-text {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.review-author img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #dfe4ec;
+}
+.review-author strong {
+  display: block;
+  font-family: var(--font-head);
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+.review-author span {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* ---------- CTA finale ---------- */
+.cta-final {
+  background: linear-gradient(135deg, #f47a2c 0%, var(--orange) 100%);
+  color: #fff;
+}
+.cta-inner {
+  display: grid;
+  gap: 26px;
+  align-items: center;
+}
+.cta-copy {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.cta-plane {
+  flex-shrink: 0;
+  color: #fff;
+}
+.cta-plane svg {
+  width: 34px;
+  height: 34px;
+}
+.cta-copy h2 {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.cta-strong {
+  font-weight: 800;
+  display: inline;
+}
+.cta-copy p {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--navy-deep);
+  color: #9fabbf;
+}
+.footer-grid {
+  display: grid;
+  gap: 34px;
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+.footer-tagline {
+  font-family: var(--font-head);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7c889c;
+  margin-top: 6px;
+}
+.footer-col h4 {
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+.footer-col a {
+  font-size: 0.88rem;
+  transition: color 0.2s ease;
+}
+.footer-col a:hover {
+  color: #fff;
+}
+.footer-contacts li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+}
+.social {
+  display: flex;
+  gap: 12px;
+}
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+.social a:hover {
+  background: var(--orange);
+}
+.social svg {
+  width: 18px;
+  height: 18px;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px 0;
+  font-size: 0.78rem;
+  text-align: center;
+  color: #6f7c90;
+}
+
+/* =========================================================
+   Responsive – tablet & desktop
+   ========================================================= */
+@media (min-width: 640px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .reviews-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+  .hero-media {
+    order: 2;
+  }
+  .cta-inner {
+    grid-template-columns: 1fr auto;
+  }
+  .cta-copy h2 {
+    font-size: 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1.2fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+  .main-nav ul {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+  }
+  .btn-header {
+    display: inline-flex;
+  }
+  .hero {
+    padding: 60px 0 72px;
+  }
+  .hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 48px;
+  }
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: none;
+    gap: 24px;
+  }
+  /* dashed connectors between steps */
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 27px;
+    left: calc(50% + 40px);
+    right: calc(-50% + 40px);
+    border-top: 2px dashed #f0c3ac;
+  }
+  .sede-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+  }
+  .reviews-grid {
+    grid-template-columns: 0.8fr 2.2fr;
+    align-items: center;
+    gap: 40px;
+  }
+  .reviews-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="logo" aria-label="ioStudente">
+          <span class="logo-text">io<strong>Studente</strong></span>
+          <span class="logo-tagline">{{slogan}}</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Apri il menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navigazione principale">
+          <ul>
+            <li><a href="#chi-siamo">Chi siamo</a></li>
+            <li><a href="#target">Percorsi</a></li>
+            <li><a href="#top">Recupero anni</a></li>
+            <li><a href="#target">Homeschooling</a></li>
+            <li><a href="#perche">Diploma</a></li>
+            <li><a href="#sede">Sedi</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+          </ul>
+        </nav>
+
+        <a href="{{link_appuntamento}}" class="btn btn-primary btn-header">{{cta_header}}</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ===================== HERO ===================== -->
+      <section class="hero" id="chi-siamo">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">{{hero_sede}}</p>
+            <h1 class="hero-title">{{hero_titolo}}</h1>
+            <p class="hero-subtitle">{{hero_sottotitolo}}</p>
+
+            <ul class="hero-features">
+              <li>
+                <span class="feature-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+                </span>
+                <span><strong>{{hero_feature1_titolo}}</strong>{{hero_feature1_testo}}</span>
+              </li>
+              <li>
+                <span class="feature-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M17 3l1.4 1.4L21 2"/></svg>
+                </span>
+                <span><strong>{{hero_feature2_titolo}}</strong>{{hero_feature2_testo}}</span>
+              </li>
+              <li>
+                <span class="feature-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </span>
+                <span><strong>{{hero_feature3_titolo}}</strong>{{hero_feature3_testo}}</span>
+              </li>
+              <li>
+                <span class="feature-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 4L2 9l10 5 10-5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+                </span>
+                <span><strong>{{hero_feature4_titolo}}</strong>{{hero_feature4_testo}}</span>
+              </li>
+            </ul>
+
+            <div class="hero-actions">
+              <a href="{{link_appuntamento}}" class="btn btn-primary">{{hero_cta_primario}} <span aria-hidden="true">&rarr;</span></a>
+              <a href="{{link_whatsapp}}" class="btn btn-ghost">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.7-1.2-4.5-4-4.6-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 .9.6 1.4.8 1.7.9.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3.1.3.1.7-.1 1.3z"/></svg>
+                {{hero_cta_whatsapp}}
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <img class="hero-img" src="{{foto_hero}}" alt="Studenti IoStudente" />
+            <div class="hero-badge">
+              <span class="badge-star" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+              </span>
+              <p><strong>{{hero_badge_evidenza}}</strong> {{hero_badge_descrizione}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TARGET / SOLUZIONI ===================== -->
+      <section class="section section-target" id="target">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow eyebrow-center">{{target_eyebrow}}</p>
+            <h2 class="section-title">{{target_titolo}}</h2>
+          </div>
+
+          <div class="card-grid grid-4">
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+              </span>
+              <h3>{{target1_titolo}}</h3>
+              <p>{{target1_testo}}</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>
+              </span>
+              <h3>{{target2_titolo}}</h3>
+              <p>{{target2_testo}}</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="7" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/><path d="M17 3l1.4 1.4L21 2"/></svg>
+              </span>
+              <h3>{{target3_titolo}}</h3>
+              <p>{{target3_testo}}</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5a2 2 0 0 1 2-2h5v16H6a2 2 0 0 0-2 2V5z"/><path d="M20 5a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 2V5z"/></svg>
+              </span>
+              <h3>{{target4_titolo}}</h3>
+              <p>{{target4_testo}}</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== COME FUNZIONA / STEP ===================== -->
+      <section class="section section-steps">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow eyebrow-center">{{step_eyebrow}}</p>
+            <h2 class="section-title">{{step_titolo}}</h2>
+          </div>
+
+          <ol class="steps">
+            <li class="step">
+              <span class="step-num">1</span>
+              <h3>{{step1_titolo}}</h3>
+              <p>{{step1_testo}}</p>
+            </li>
+            <li class="step">
+              <span class="step-num">2</span>
+              <h3>{{step2_titolo}}</h3>
+              <p>{{step2_testo}}</p>
+            </li>
+            <li class="step">
+              <span class="step-num">3</span>
+              <h3>{{step3_titolo}}</h3>
+              <p>{{step3_testo}}</p>
+            </li>
+            <li class="step">
+              <span class="step-num">4</span>
+              <h3>{{step4_titolo}}</h3>
+              <p>{{step4_testo}}</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===================== SEDE (dark) ===================== -->
+      <section class="section section-sede" id="sede">
+        <div class="container sede-grid">
+          <div class="sede-col">
+            <p class="eyebrow">{{sede_eyebrow}}</p>
+            <h2 class="sede-title">{{sede_titolo}}</h2>
+            <p class="sede-desc">{{sede_descrizione}}</p>
+            <ul class="sede-list">
+              <li>
+                <span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+                {{sede_indirizzo}}
+              </li>
+              <li>
+                <span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span>
+                {{sede_parcheggio}}
+              </li>
+              <li>
+                <span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 16l1.5-5A2 2 0 0 1 8.4 9.5h7.2a2 2 0 0 1 1.9 1.5L19 16"/><path d="M4 16h16v3H4z"/><circle cx="7.5" cy="19" r="1.2"/><circle cx="16.5" cy="19" r="1.2"/></svg></span>
+                {{sede_trasporti}}
+              </li>
+            </ul>
+          </div>
+
+          <div class="sede-media">
+            <img src="{{foto_sede}}" alt="La sede IoStudente di Torbole Casaglia" />
+          </div>
+
+          <div class="sede-col" id="perche">
+            <p class="eyebrow">{{perche_eyebrow}}</p>
+            <h2 class="sede-title">{{perche_titolo}}</h2>
+            <ul class="check-list">
+              <li><span class="check" aria-hidden="true">&#10003;</span>{{perche_punto1}}</li>
+              <li><span class="check" aria-hidden="true">&#10003;</span>{{perche_punto2}}</li>
+              <li><span class="check" aria-hidden="true">&#10003;</span>{{perche_punto3}}</li>
+              <li><span class="check" aria-hidden="true">&#10003;</span>{{perche_punto4}}</li>
+              <li><span class="check" aria-hidden="true">&#10003;</span>{{perche_punto5}}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== RECENSIONI ===================== -->
+      <section class="section section-reviews">
+        <div class="container reviews-grid">
+          <div class="reviews-intro">
+            <p class="eyebrow">{{recensioni_eyebrow}}</p>
+            <h2 class="section-title">{{recensioni_titolo}}</h2>
+            <div class="trust">
+              <span class="trust-star" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+              </span>
+              <span class="trust-label">Trustpilot</span>
+              <span class="trust-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="trust-rating">{{recensioni_rating}}</span>
+            </div>
+          </div>
+
+          <div class="reviews-cards">
+            <article class="review-card">
+              <div class="stars" aria-hidden="true">★★★★★</div>
+              <p class="review-text">{{recensione1_testo}}</p>
+              <div class="review-author">
+                <img src="{{recensione1_foto}}" alt="{{recensione1_nome}}" />
+                <span><strong>{{recensione1_nome}}</strong>{{recensione1_ruolo}}</span>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-hidden="true">★★★★★</div>
+              <p class="review-text">{{recensione2_testo}}</p>
+              <div class="review-author">
+                <img src="{{recensione2_foto}}" alt="{{recensione2_nome}}" />
+                <span><strong>{{recensione2_nome}}</strong>{{recensione2_ruolo}}</span>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-hidden="true">★★★★★</div>
+              <p class="review-text">{{recensione3_testo}}</p>
+              <div class="review-author">
+                <img src="{{recensione3_foto}}" alt="{{recensione3_nome}}" />
+                <span><strong>{{recensione3_nome}}</strong>{{recensione3_ruolo}}</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CTA FINALE ===================== -->
+      <section class="section cta-final" id="contatti">
+        <div class="container cta-inner">
+          <div class="cta-copy">
+            <span class="cta-plane" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </span>
+            <div>
+              <h2>{{cta_titolo}} <span class="cta-strong">{{cta_sottotitolo}}</span></h2>
+              <p>{{cta_descrizione}}</p>
+            </div>
+          </div>
+          <div class="cta-actions">
+            <a href="{{link_appuntamento}}" class="btn btn-white">{{cta_bottone_primario}} <span aria-hidden="true">&rarr;</span></a>
+            <a href="{{link_whatsapp}}" class="btn btn-ghost btn-ghost-light">
+              <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.7-1.2-4.5-4-4.6-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 .9.6 1.4.8 1.7.9.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3.1.3.1.7-.1 1.3z"/></svg>
+              {{cta_bottone_whatsapp}}
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text light">io<strong>Studente</strong></span>
+          <p class="footer-tagline">{{slogan}}</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Link rapidi</h4>
+          <ul>
+            <li><a href="#chi-siamo">Chi siamo</a></li>
+            <li><a href="#target">Percorsi</a></li>
+            <li><a href="#perche">Diploma</a></li>
+            <li><a href="#top">Recupero anni</a></li>
+            <li><a href="#target">Homeschooling</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>{{footer_sede_titolo}}</h4>
+          <ul class="footer-contacts">
+            <li>
+              <span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg></span>
+              <a href="tel:{{telefono}}">{{telefono}}</a>
+            </li>
+            <li>
+              <span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+              <a href="mailto:{{email}}">{{email}}</a>
+            </li>
+            <li>
+              <span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              {{orari}}
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Seguici su</h4>
+          <div class="social">
+            <a href="{{link_facebook}}" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3H13.5V9.6c0-.4.2-.6.5-.6z"/></svg>
+            </a>
+            <a href="{{link_instagram}}" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="{{link_youtube}}" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-2-.2-3.2-.4-3.9a2.6 2.6 0 0 0-1.8-1.8C18.3 6 12 6 12 6s-6.3 0-7.8.3A2.6 2.6 0 0 0 2.4 8.1C2.2 8.8 2 10 2 12s.2 3.2.4 3.9a2.6 2.6 0 0 0 1.8 1.8C5.7 18 12 18 12 18s6.3 0 7.8-.3a2.6 2.6 0 0 0 1.8-1.8c.2-.7.4-1.9.4-3.9zM10 15V9l5 3-5 3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2025 ioStudente &mdash; {{footer_sede_titolo}}. Tutti i diritti riservati.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var toggle = document.getElementById("navToggle");
+        var nav = document.getElementById("mainNav");
+        if (!toggle || !nav) return;
+        toggle.addEventListener("click", function () {
+          var open = nav.classList.toggle("open");
+          toggle.classList.toggle("active", open);
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        nav.addEventListener("click", function (e) {
+          if (e.target.tagName === "A") {
+            nav.classList.remove("open");
+            toggle.classList.remove("active");
+            toggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

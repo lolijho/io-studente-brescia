@@ -61,11 +61,26 @@ function tryCommit() {
   }
 }
 
+async function buildInline() {
+  // Versione single-file: CSS in <style> e favicon come data-URI (JS già inline).
+  let html = await fs.readFile(path.join(SRC, "index.html"), "utf8");
+  const css = await fs.readFile(path.join(SRC, "style.css"), "utf8");
+  const favSvg = await fs.readFile(path.join(SRC, "favicon.svg"), "utf8");
+  const favData = "data:image/svg+xml;utf8," + encodeURIComponent(favSvg);
+  html = html.replace('href="./favicon.svg"', `href="${favData}"`);
+  html = html.replace(
+    '<link rel="stylesheet" href="./style.css" />',
+    "<style>\n" + css + "\n    </style>"
+  );
+  await fs.writeFile(path.join(DIST, "index-inline.html"), html);
+}
+
 async function main() {
   const shouldCommit = process.argv.includes("--commit");
   await rmrf(DIST);
   await copyDir(SRC, DIST);
-  console.log("✓ Build completata: dist/ generata da src/.");
+  await buildInline();
+  console.log("✓ Build completata: dist/ generata da src/ (+ index-inline.html single-file).");
   if (shouldCommit) tryCommit();
 }
 
