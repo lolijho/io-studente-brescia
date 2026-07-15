@@ -1,5 +1,4 @@
-# Build output
-dist/
+# Build output (dist/ is committed for static hosting)
 .output/
 
 # Dependencies
