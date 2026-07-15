@@ -1,0 +1,71 @@
+---
+const footerLinks = {
+  Servizi: [
+    { label: "Trasporti", href: "/servizi#trasporti" },
+    { label: "Agevolazioni", href: "/servizi#agevolazioni" },
+    { label: "Borse di studio", href: "/servizi#borse" },
+    { label: "Mensa", href: "/servizi#mensa" },
+  ],
+  Risorse: [
+    { label: "Orientamento", href: "/orientamento" },
+    { label: "Biblioteche", href: "/risorse#biblioteche" },
+    { label: "Stage e tirocini", href: "/risorse#stage" },
+    { label: "Housing", href: "/risorse#housing" },
+  ],
+  Info: [
+    { label: "Chi siamo", href: "/chi-siamo" },
+    { label: "Contatti", href: "/contatti" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Privacy", href: "/privacy" },
+  ],
+};
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">
+          <strong>Io Studente</strong>
+          <small>Brescia</small>
+        </span>
+      </div>
+      <p>
+        Il portale unico dei servizi per gli studenti di Brescia. Trasporti,
+        agevolazioni, orientamento e opportunità in un'unica piattaforma.
+      </p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="YouTube">▶️</a>
+        <a href="#" aria-label="Telegram">✈️</a>
+      </div>
+    </div>
+
+    {
+      Object.entries(footerLinks).map(([title, links]) => (
+        <div class="footer-col">
+          <h4>{title}</h4>
+          <ul>
+            {links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {currentYear} Io Studente Brescia. Tutti i diritti riservati.</p>
+    <p>
+      Un progetto in collaborazione con Università di Brescia e Comune di
+      Brescia.
+    </p>
+  </div>
+</footer>
