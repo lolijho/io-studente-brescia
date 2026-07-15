@@ -1,0 +1,62 @@
+---
+interface NewsItem {
+  category: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  href: string;
+}
+
+const news: NewsItem[] = [
+  {
+    category: "Bandi",
+    title: "Apertura bandi DSU 2025/2026",
+    excerpt: "Sono aperte le domande per le borse di studio regionali. Scopri requisiti e scadenze.",
+    date: "10 Mar 2025",
+    href: "/news/bandi-dsu-2025",
+  },
+  {
+    category: "Trasporti",
+    title: "Nuovo abbonamento studenti Arriva",
+    excerpt: "Da marzo disponibile il nuovo abbonamento agevolato per gli studenti di Brescia.",
+    date: "08 Mar 2025",
+    href: "/news/abbonamento-arriva",
+  },
+  {
+    category: "Università",
+    title: "UNIBS: nuovi corsi di laurea",
+    excerpt: "L'Università di Brescia attiva tre nuovi corsi di laurea per l'anno accademico 2025/2026.",
+    date: "05 Mar 2025",
+    href: "/news/nuovi-corsi-unibs",
+  },
+];
+---
+
+<section class="news-section" id="news">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Ultime notizie</h2>
+      <p class="section-subtitle">
+        Restate aggiornati sulle ultime novità
+      </p>
+    </div>
+
+    <div class="news-grid">
+      {
+        news.map((item) => (
+          <article class="news-card">
+            <div class="news-category">{item.category}</div>
+            <h3 class="news-title">
+              <a href={item.href}>{item.title}</a>
+            </h3>
+            <p class="news-excerpt">{item.excerpt}</p>
+            <div class="news-meta">
+              <span class="news-date">📅 {item.date}</span>
+              <a href={item.href} class="news-read-more">Leggi →</a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
