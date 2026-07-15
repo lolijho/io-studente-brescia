@@ -1,12 +1,5 @@
-# Build output
-dist/
-.output/
-
 # Dependencies
 node_modules/
-
-# Astro
-.astro/
 
 # Environment
 .env
@@ -18,3 +11,6 @@ node_modules/
 # Editor
 .vscode/
 .idea/
+
+# NOTE: la cartella dist/ NON è ignorata: viene committata perché
+# il plugin WordPress "WcodeAi - Frontend GitHub" legge il sito statico da lì.

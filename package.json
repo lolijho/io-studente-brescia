@@ -1,15 +1,12 @@
 {
   "name": "io-studente-brescia",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Sito statico ioStudente - Recupero Anni Scolastici Brescia, compatibile con il plugin WordPress 'WcodeAi - Frontend GitHub'. Output HTML statico con segnaposto {{chiave}}.",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^4.16.0"
+    "build": "node build.mjs",
+    "build:commit": "node build.mjs --commit",
+    "dev": "node build.mjs && npx --yes serve dist",
+    "preview": "npx --yes serve dist"
   }
 }
