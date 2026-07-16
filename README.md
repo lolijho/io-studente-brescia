@@ -14,8 +14,12 @@ personalizzati impostati in WordPress.
 - **Nessuna dipendenza a runtime**: basta servire i file di `dist/`.
 - **Struttura semantica** (`header` / `section` / `footer`) e **mobile-first**.
 - **Contenuti come segnaposto** `{{chiave}}`: ogni testo/immagine modificabile dal
-  cliente è un token che WordPress rimpiazza. I punti non modificabili (menu,
-  micro-copy strutturale) hanno testo di esempio fisso.
+  cliente è un token che WordPress rimpiazza con i campi personalizzati. I punti
+  non modificabili (menu, micro-copy strutturale) hanno testo di esempio fisso.
+- **Fallback integrato**: se un campo personalizzato è vuoto, uno script inline
+  sostituisce il token con il testo/immagine di default preso da
+  `contenuti-esempio.json`. Così non si vede mai un `{{...}}` grezzo e la pagina
+  è già completa e visualizzabile anche senza WordPress.
 
 ## Struttura
 
@@ -26,10 +30,12 @@ personalizzati impostati in WordPress.
 │   ├── style.css        # CSS mobile-first
 │   └── favicon.svg
 ├── dist/                # output di build (committato: lo legge il plugin)
-│   ├── index.html
+│   ├── index.html         # sito (CSS in style.css) + segnaposto + fallback
+│   ├── index-inline.html  # stesso sito in un unico file (CSS/JS/favicon inline)
 │   ├── style.css
 │   └── favicon.svg
-├── build.mjs            # copia src/ -> dist/ (+ commit opzionale)
+├── contenuti-esempio.json # testi/immagini di default (fallback)
+├── build.mjs            # genera dist/ + inietta il fallback (+ commit opzionale)
 └── package.json
 ```
 
